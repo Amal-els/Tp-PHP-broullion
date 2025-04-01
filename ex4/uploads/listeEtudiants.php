@@ -1,5 +1,6 @@
 <?php
 include_once '../class/autoloader.php';
+$pageName = "Liste d'étudiants";
 $db = ConnexionBD::getInstance();
 $query = 'SELECT * FROM student;';
 $resultat = $db->query($query);
@@ -15,6 +16,7 @@ include_once '../fragments/header.php';
         <th scope="col">id</th>
         <th scope="col">name</th>
         <th scope="col">birthday</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +25,7 @@ include_once '../fragments/header.php';
           <th scope="row"><?= htmlspecialchars($etudiant->id) ?></th>
           <td><?= htmlspecialchars($etudiant->name) ?></td>
           <td><?= htmlspecialchars($etudiant->birthday) ?></td>
+          <td><a href="detailsEtudiant.php?id=<?=$etudiant->id?>"><img style = "height:20px ;witdh:20px" src="../images/i icon.png" alt=""></a></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

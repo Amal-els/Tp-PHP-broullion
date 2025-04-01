@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Détails Cv";
+$pageName= "Détails Etudiant";
 include_once "../class/autoloader.php";
 include_once '../fragments/header.php';
 $db = ConnexionBD::getInstance();
@@ -10,7 +10,7 @@ if (!isset($id)) {
 $query = "SELECT * FROM student where id = '$id';";
 $resultat = $db->query($query);
 $info = $resultat->fetch(PDO::FETCH_OBJ); 
-if (!isset($info)) {
+if (!($info)) {
     header('Location: listeEtudiants.php ');
 }
 else {
