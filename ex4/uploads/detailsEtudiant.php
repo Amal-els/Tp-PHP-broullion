@@ -7,8 +7,9 @@ $id = $_GET['id'];
 if (!isset($id)) {
     header('Location: listeEtudiants.php');
 }
-$query = "SELECT * FROM student where id = '$id';";
-$resultat = $db->query($query);
+$query = "SELECT * FROM student where id = :id;";
+$resultat = $db->prepare($query);
+$resultat->execute(['id'=>$id]);
 $info = $resultat->fetch(PDO::FETCH_OBJ); 
 if (!($info)) {
     header('Location: listeEtudiants.php ');
