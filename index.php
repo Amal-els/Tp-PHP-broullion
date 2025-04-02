@@ -1,8 +1,8 @@
 <?php
 require_once "classes/Student.php";
 
-$student = new Student(); // Instantiate the class
-$students = $student->getAll(); // Call the method
+$student = new Student();  
+$students = $student->getAll();  
 
 // Display students
 echo "<table border='1'>

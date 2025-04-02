@@ -1,8 +1,8 @@
 <?php
 require_once "../classes/Section.php";
 
-$section = new Section(); // Instantiate the class
-$sections = $section->getAll(); // Get all sections
+$section = new Section(); 
+$sections = $section->getAll(); 
 
 // Display sections
 echo "<table border='1'>

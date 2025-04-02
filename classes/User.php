@@ -2,16 +2,16 @@
 require_once "Database.php";
 
 class User {
-    public static function login($email) {
+    public static function login($email, $username) {
         $pdo = Database::connect();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->execute(['email' => $email]);
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email AND username = :username");
+        $stmt->execute(['email' => $email, 'username' => $username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
         if ($user) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username']=$user['username'];
+            $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             return true;
         }
@@ -25,4 +25,4 @@ class User {
         exit();
     }
 }
-?>
+?> 

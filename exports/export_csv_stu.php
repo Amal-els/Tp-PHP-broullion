@@ -5,11 +5,7 @@ header('Content-Disposition: attachment; filename=students.csv');
 
 $pdo = Database::connect();
 $output = fopen('php://output', 'w');
-
-// En-tête du fichier CSV
 fputcsv($output, ['ID', 'Nom', 'Date de Naissance', 'Section']);
-
-// Récupérer les étudiants
 $stmt = $pdo->query("SELECT students.*, sections.designation 
                      FROM students 
                      LEFT JOIN sections ON students.section_id = sections.id");

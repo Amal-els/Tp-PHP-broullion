@@ -38,10 +38,10 @@ $students = $studentObj->getAll($search);
     <script>
         $(document).ready(function() {
             $('#studentsTable').DataTable({
-                "paging": true,           // Enables pagination
-                "info": true,             // Shows "Showing 1 to X of X entries"
-                "lengthChange": false,    // Disables the option to change the number of entries shown
-                "pageLength": 2         // Sets default number of entries per page to 2
+                "paging": true,           
+                "info": true,            
+                "lengthChange": false,  
+                "pageLength": 2        
             });
         });
     </script>

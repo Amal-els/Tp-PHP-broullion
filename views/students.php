@@ -31,16 +31,16 @@ $students = $studentObj->getAll($search);
     <script>
         $(document).ready(function() {
             $('#studentsTable').DataTable({
-                "paging": true,           // Enables pagination
-                "info": true,             // Shows "Showing 1 to X of X entries"
-                "lengthChange": false,    // Disables the option to change the number of entries shown
-                "pageLength": 2         // Sets default number of entries per page to 2
+                "paging": true,         
+                "info": true,             
+                "lengthChange": false,     
+                "pageLength": 2         
             });
         });
     </script>
 </head>
 <body>
-    <h2>Liste des étudiants</h2>
+    <h2>Liste des etudiants</h2>
     <form method="GET" action="">
         <label for="search">Rechercher par nom :</label>
         <input type="text" id="search" name="search" value="<?= htmlspecialchars($search); ?>">
@@ -62,11 +62,10 @@ $students = $studentObj->getAll($search);
                 <tr>
                     <td><?= htmlspecialchars($student['id']); ?></td>
                     <td>
-                    <img src="<?= htmlspecialchars(!empty($student['image']) ? $student['image'] : 'default.jpg'); ?>" 
-     alt="Photo de <?= htmlspecialchars($student['name']); ?>" 
-     style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-
-
+                    <img src="<?= !empty($student['image']) ? htmlspecialchars($student['image']) : 'default.jpg'; ?>" 
+     alt="Photo de <?= htmlspecialchars($student['name'] ?? 'Inconnu'); ?>" 
+     style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+     onerror="this.onerror=null; this.src='default.jpg';">
                     </td>
                     <td><?= htmlspecialchars($student['name']); ?></td>
                     <td><?= htmlspecialchars($student['birthday']); ?></td>
@@ -76,8 +75,8 @@ $students = $studentObj->getAll($search);
         </tbody>
     </table>
     <br>
-    <a href="../exports/export_csv.php" target="_blank">📤 Export CSV</a>
-    <a href="../exports/export_pdf.php" target="_blank">📤 Export PDF</a>
-    <a href="../exports/export_excel.php" target="_blank">📤 Export Excel</a>
+    <a href="../exports/export_csv_stu.php" target="_blank">📤 Export CSV</a>
+    <a href="../exports/export_pdf_stu.php" target="_blank">📤 Export PDF</a>
+    <a href="../exports/export_excel_stu.php" target="_blank">📤 Export Excel</a>
 </body>
 </html>
