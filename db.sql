@@ -40,9 +40,9 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`id`, `name`, `birthday`, `image`, `section_id`) VALUES
-(1, 'tess', '2004-11-13', tess.jpg, 1),
-(2, 'may', '2006-10-26', ../default.jpg, 1),
-(3, 'sou', '1970-10-10', ../default.jpg, 2);
+(1, 'tess', '2004-11-13', ../tess.jpg, 1),
+(2, 'may', '2001-10-26', ../default.jpg, 1),
+(3, 'sou', '2000-10-10', ../default.jpg, 2);
 
 -- --------------------------------------------------------
 
