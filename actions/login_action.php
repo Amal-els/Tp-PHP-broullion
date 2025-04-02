@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (User::login($email,$username)) {
         header("Location: ../views/dashboard.php");
+        
     } else {
         echo "Invalid credentials.";
     }
