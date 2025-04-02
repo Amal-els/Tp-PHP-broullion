@@ -1,7 +1,14 @@
-<form method="POST" action="../actions/login_action.php">
-    <label>Nom d'utilisateur :</label>
-    <input type="text" name="username" required>
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
-    <button type="submit">Se connecter</button>
-</form>
+<?php
+require_once "../classes/User.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $username=$_POST['username'];
+
+    if (User::login($email,$username)) {
+        header("Location: ../views/dashboard.php");
+    } else {
+        echo "Invalid credentials.";
+    }
+}
+?>
