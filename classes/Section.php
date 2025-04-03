@@ -6,33 +6,15 @@ class Section {
     public function __construct() {
         $this->pdo = Database::connect();
     }
-    public function getAll() {
-        $stmt = $this->pdo->query("SELECT * FROM section");
+    public function getAll($search = '') {
+        $query = "SELECT * FROM section";
+        if ($search) {
+            $query .= " WHERE section.designation LIKE :search";
+        }
+        $stmt = $this->pdo->prepare($query);
+        if ($search) {
+            $stmt->bindValue(':search', '%' . $search . '%');
+        }
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function getById($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM section WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-    public function create($designation, $description) {
-        $stmt = $this->pdo->prepare("INSERT INTO section (designation, description) VALUES (:designation, :description)");
-        return $stmt->execute([
-            'designation' => $designation,
-            'description' => $description
-        ]);
-    }
-    public function update($id, $designation, $description) {
-        $stmt = $this->pdo->prepare("UPDATE section SET designation = :designation, description = :description WHERE id = :id");
-        return $stmt->execute([
-            'id' => $id,
-            'designation' => $designation,
-            'description' => $description
-        ]);
-    }
-    public function delete($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM section WHERE id = :id");
-        return $stmt->execute(['id' => $id]);
-    }
-}
-?>
+    }}
