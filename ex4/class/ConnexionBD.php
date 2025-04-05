@@ -16,8 +16,7 @@ class ConnexionBD {
 
     public static function getInstance(): ?PDO {
         if (!self::$_bdd) {
-            new ConnexionBD();
-        }
+            new ConnexionBD();}
         return (self::$_bdd);
     }
 }
